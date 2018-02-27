@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="styles.css">
+  <title>What a Beautiful Vue!</title>
+</head>
+<body>
+  <!-- <div id="hello-vue">
+    <h1>{{ title }}</h1>
+    <p v-on:click="sayHello2">{{ message }}</p>
+  </div>
+
+  <div id="hello-vue2">
+      <h1>{{ title }}</h1>
+      <h2>{{message2}}</h2>
+      <p>{{ message + ' ' + message2 }}</p>
+  </div> -->
+
+  <!-- Start with example of showing the whole media
+  Walk through media.contributor v-show example
+  Set showDetail to false
+  Write toggleDetail method -->
+  <div id="media-list">
+    <h2>{{ title }}</h2>
+    <ul>
+      <li v-for="media in mediaList">
+        <h3 v-on:click="toggleDetails(media)">{{ media.title }}</h3> 
+        <transition name="fade">
+          <div v-if="media.showDetail">
+              <p>Type: {{ media.type }}</p>
+              <p v-show="media.contributor">By: {{ media.contributor }}</p>
+          </div>
+        </transition>
+      </li>
+    </ul>
+  </div>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.5.13/dist/vue.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

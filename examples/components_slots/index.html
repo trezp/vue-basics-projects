@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="styles.css">
+  <title>Dynamic Components!</title>
+</head>
+<body>
+  <div id="root">
+    <ul>
+      <li><a href="#" @click="currentView='home'">Home</a></li>
+      <li><a href="#" @click="currentView='about'">About</a></li>
+      <li><a href="#" @click="currentView='contact'">Contact</a></li>
+      <li><a href="#" @click="currentView='new'">New</a></li>
+    </ul>
+
+    <app-searchbar></app-searchbar>
+
+    <component v-bind:is="currentView" class="main-content-area">
+      <slot name="subheader"><h2>Default subheader content.</h2></slot>
+      <slot name="content"></slot>
+    </component>
+    
+    <app-footer></app-footer>
+
+  </div>
+
+     
+      
+
+      <!-- Start by building/using searchbar and footer components, then introduce generic component and dynamically switching between them -->
+
+
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.5.13/dist/vue.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

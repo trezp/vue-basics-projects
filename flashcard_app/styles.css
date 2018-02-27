@@ -1,0 +1,33 @@
+
+ul {
+  list-style-type: none;
+  padding-left: 0;
+  display: flex;
+  flex-flow: row wrap;
+}
+
+#cardList {
+  max-width: 80%;
+  padding: 2em;
+}
+.card {
+  width: 100px;
+  height: 100px;
+  padding: 30px;
+  border: 1px solid black;
+  border-radius: 3px;
+  margin: 5px;
+  cursor: pointer;
+  position: relative;
+}
+
+.card span {
+  position: absolute;
+  right: 0;
+  top: 0;
+  padding: 15px;
+}
+
+.card p {
+  text-align: center;
+}

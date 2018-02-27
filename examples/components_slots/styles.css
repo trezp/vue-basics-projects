@@ -1,0 +1,18 @@
+ul {
+  list-style-type: none;
+  padding-left: 0;
+  display: flex;
+  justify-content: center;
+}
+
+ul li {
+  margin: 0px 10px;
+}
+
+.main-content-area {
+  max-width: 70%;
+  margin: auto;
+}
+.footer-head {
+  text-align: center;
+}
