@@ -11,22 +11,8 @@
   <div id="cardList">
 
     <h1>Flashcard App!</h1>
-
-    <label for="front">Front
-      <input v-model="cardFront" type="text" id="front">
-    </label>
-    <label for="back">Back
-      <input v-model="cardBack" type="text" id="back">
-    </label>
-    <button v-on:click="addNew">Add a New Card</button>
-
-    <ul>
-      <li v-for="(card, index) in cards" class="card" v-on:click="toggleCard(card)">
-        <span v-on:click="cards.splice(index, 1)">X</span>
-        <p v-show="!card.active" class="front">{{card.front}}</p>
-        <p v-show="card.active" class="back">{{card.back}}</p>
-      </li>
-    </ul>   
+    
+    <div id="flashCardList"></div>
 
   </div>
 
