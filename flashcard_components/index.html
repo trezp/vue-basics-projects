@@ -8,14 +8,26 @@
   <title>Flash!</title>
 </head>
 <body>
-  <div id="cardList">
 
+  <div id="app">
     <h1>Flashcard App!</h1>
-    
-    <div id="flashCardList"></div>
 
+    <div>
+      <flash-card 
+        :cards="cards"
+        message="Stuff">
+      </flash-card>
+    </div>
   </div>
 
+  <script type="text/x-template" id="flashcard-template">
+    <ul>
+      <li class="card" v-for="card in cards">
+        <span>{{card.front}}</span>
+      </li>
+    </ul>
+  </script>
+  
   <script src="https://cdn.jsdelivr.net/npm/vue@2.5.13/dist/vue.js"></script>
   <script src="app.js"></script>
 </body>
