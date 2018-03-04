@@ -3,24 +3,20 @@ new Vue({
   data(){
     return {
       users: {},
-      title: "random users!"
+      title: "Random Users!",
+      loading: true
     }
-  }, 
+  },
   created(){
     var self = this;
     axios.get('https://randomuser.me/api/?results=10&nat=us,dk,fr,gb')
       .then(function (response) {
         console.log(response.data);
         self.users = response.data.results;
+        self.loading = false; 
       })
       .catch(function (error) {
         console.log(error);
       });
   },
 });
-
-Vue.filter('capitalize', function (value) {
-  if (!value) return ''
-  value = value.toString()
-  return value.charAt(0).toUpperCase() + value.slice(1)
-})

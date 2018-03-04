@@ -1,11 +1,13 @@
 .container {
-  display: flex;
-  flex-wrap: wrap; 
   max-width: 80%;
   margin: auto;
 }
-
 .user {
+  display: flex;
+  flex-wrap: wrap; 
+}
+
+.user > div {
   padding: 10px;
 }
 
