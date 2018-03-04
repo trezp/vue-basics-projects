@@ -1,0 +1,11 @@
+.container {
+  display: flex;
+  flex-wrap: wrap; 
+  max-width: 80%;
+  margin: auto;
+}
+
+.user {
+  padding: 10px;
+}
+
