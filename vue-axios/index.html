@@ -10,7 +10,7 @@
 <body>
   
   <div id="app" class="container">
-    <h1>{{ title }}</h1>
+    <h1>{{ userFirst }}</h1>
     <div v-if="loading"><h2>Fetching random users...</h2></div>
     <div class="user" v-else="!loading">
       <div v-for="user in users">

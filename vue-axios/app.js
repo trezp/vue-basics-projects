@@ -3,6 +3,8 @@ new Vue({
   data(){
     return {
       users: {},
+      userFirst: '',
+      userLast: '',
       title: "Random Users!",
       loading: true
     }
@@ -11,8 +13,9 @@ new Vue({
     var self = this;
     axios.get('https://randomuser.me/api/?results=10&nat=us,dk,fr,gb')
       .then(function (response) {
-        console.log(response.data);
         self.users = response.data.results;
+        console.log(response.data.results)
+        self.userFirst = response.data.results[0].name.first;
         self.loading = false; 
       })
       .catch(function (error) {
