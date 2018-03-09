@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
   <title>Flash!</title>
 </head>
@@ -11,22 +12,19 @@
 
   <div id="app">
     <h1>Flashcard App!</h1>
-
-    <div>
-      <flash-card 
-        :cards="cards"
-        message="Stuff">
-      </flash-card>
-    </div>
+    <flash-card :decks="decks[0]"></flash-card>
+    <flash-card :decks="decks[1]"></flash-card>
   </div>
 
   <script type="text/x-template" id="flashcard-template">
-    <ul>
-      <li class="card" v-for="card in cards">
-        <span>{{card.front}}</span>
-      </li>
-    </ul>
+    <div class="deck">
+      <p class="card" v-for="card in decks">
+        {{card.front}}
+        <span @click="pleaseDelete(card)">X</span>
+      </p>
+    </div>
   </script>
+
   
   <script src="https://cdn.jsdelivr.net/npm/vue@2.5.13/dist/vue.js"></script>
   <script src="app.js"></script>
