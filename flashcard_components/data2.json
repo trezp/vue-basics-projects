@@ -1,0 +1,42 @@
+[
+  {
+    "front": "This is CARD 1 OF DECK 2.",
+    "back": "This is the back side of the card.",
+    "active": false
+  },
+  {
+    "front": "This is CARD 2.",
+    "back": "This is the back side of the card.",
+    "active": false
+  },
+  {
+    "front": "This is CARD 3.",
+    "back": "This is the back side of the card.",
+    "active": false
+  },
+  {
+    "front": "This is CARD 4.",
+    "back": "This is the back side of the card.",
+    "active": false
+  },
+  {
+    "front": "This is CARD 3.",
+    "back": "This is the back side of the card.",
+    "active": false
+  },
+  {
+    "front": "This is CARD 4.",
+    "back": "This is the back side of the card.",
+    "active": false
+  },
+  {
+    "front": "This is CARD 3.",
+    "back": "This is the back side of the card.",
+    "active": false
+  },
+  {
+    "front": "This is CARD 4.",
+    "back": "This is the back side of the card.",
+    "active": false
+  }
+]

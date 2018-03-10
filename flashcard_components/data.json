@@ -1,0 +1,22 @@
+[
+  {
+    "front": "Event Delegation",
+    "back": "Listening for an event on the parent",
+    "active": false
+  },
+  {
+    "front": "Flexbox",
+    "back": "Some CSS stuff",
+    "active": false
+  },
+  {
+    "front": "Another thing",
+    "back": "This is the back side of the card.",
+    "active": false
+  },
+  {
+    "front": "This is CARD 4.",
+    "back": "This is the back side of the card.",
+    "active": false
+  }
+]

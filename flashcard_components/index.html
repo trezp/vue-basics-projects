@@ -13,11 +13,13 @@
   <div class="container">
     <h1>Flashcards!</h1>
     <div id="app">
-      <flash-deck :deck="deck[0]"></flash-deck>
-      <flash-deck :deck="deck[1]"></flash-deck>
+      <button @click="setActiveDeck('data.json')">Deck 1</button>
+      <button @click="setActiveDeck('data2.json')">Deck 2</button>
+      <flash-deck :deck="deck"></flash-deck>
     </div>
   </div> 
- 
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/vue@2.5.13/dist/vue.js"></script>
   <script src="app.js"></script>
 </body>
