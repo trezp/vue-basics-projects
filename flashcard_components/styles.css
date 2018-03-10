@@ -1,12 +1,12 @@
 body {
   font-family: 'Open Sans', sans-serif;
 }
-.deck {
+.deck-container {
   display: flex;
   flex-flow: row wrap;
 }
 
-#app {
+.container {
   max-width: 80%;
   padding: 2em;
 }
@@ -21,13 +21,12 @@ body {
   position: relative;
 }
 
-.card span {
+.deck {
+  position: relative;
+}
+.deck span {
   position: absolute;
   right: 0;
   top: 0;
   padding: 15px;
-}
-
-.card p {
-  text-align: center;
 }

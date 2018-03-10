@@ -10,22 +10,13 @@
 </head>
 <body>
 
-  <div id="app">
-    <h1>Flashcard App!</h1>
-    <flash-card :decks="decks[0]"></flash-card>
-    <flash-card :decks="decks[1]"></flash-card>
-  </div>
-
-  <script type="text/x-template" id="flashcard-template">
-    <div class="deck">
-      <p class="card" v-for="card in decks">
-        {{card.front}}
-        <span @click="pleaseDelete(card)">X</span>
-      </p>
+  <div class="container">
+    <h1>Flashcards!</h1>
+    <div id="app">
+      <flash-deck :deck="deck"></flash-deck>
     </div>
-  </script>
-
-  
+  </div> 
+ 
   <script src="https://cdn.jsdelivr.net/npm/vue@2.5.13/dist/vue.js"></script>
   <script src="app.js"></script>
 </body>

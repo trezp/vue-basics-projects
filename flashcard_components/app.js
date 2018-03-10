@@ -14,12 +14,17 @@ const deck = [
     'back': 'This is the back side of card 3.',
     'active': false
   },
+  {
+    'front': 'This is card 4',
+    'back': 'This is the back side of card 4.',
+    'active': false
+  },
 ]
 
 const deck2 = [
   {
-    'front': 'What is the shortcut to bind a class to an element?',
-    'back': 'Answer',
+    'front': 'This is from the second deck.',
+    'back': 'Backside',
     'active': false
   },
   {
@@ -27,18 +32,37 @@ const deck2 = [
     'back': 'This is the back side of card 2.',
     'active': false
   },
-  {
-    'front': 'This is card 3',
-    'back': 'This is the back side of card 3.',
-    'active': false
-  },
 ]
+
+
+Vue.component('flash-deck', {
+  template: `
+    <div class="deck-container">
+      <div v-for="card in deck" class="deck">
+        <span>X</span>
+        <flash-card class="card" :card="card"></flash-card>
+      </div>
+    </div>
+  `,
+  props: ['deck']
+});
+
 Vue.component('flash-card', {
-  template: '#flashcard-template',
-  props: ['decks'],
+  template: `
+    <div @click="toggleCard">
+      <h4 v-show="front">{{card.front}}</h4>
+      <h4 v-show="!front">{{card.back}}</h4>
+    </div>
+  `,
+  props: ['card'],
+  data: function(){
+    return {
+      front: true
+    }
+  },
   methods: {
-    pleaseDelete: function(card){
-      console
+    toggleCard: function(event){
+      this.front ? this.front = false : this.front = true;
     }
   }
 });
@@ -47,16 +71,10 @@ const app = new Vue({
   el: '#app',
   data: function() {
     return {
-      decks: [deck, deck2],
+      deck: deck,
       cardFront: '',
       cardBack: '',
     }
-  },
-  methods: {
-    handleDelete: function(card){
-      console.log(card.front);
-    }
   }
-
 });
 
