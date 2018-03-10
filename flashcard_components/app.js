@@ -71,7 +71,7 @@ const app = new Vue({
   el: '#app',
   data: function() {
     return {
-      deck: deck,
+      deck: [deck, deck2],
       cardFront: '',
       cardBack: '',
     }
