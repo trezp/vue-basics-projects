@@ -9,7 +9,7 @@
 </head>
 <body>
   <!-- <div id="hello-vue">
-    <h1>{{ title }}</h1>
+    <h1 v-on:click="sayTitle">{{ title }}</h1>
     <p v-on:click="sayHello2">{{ message }}</p>
   </div>
 
@@ -23,12 +23,23 @@
   Walk through media.contributor v-show example
   Set showDetail to false
   Write toggleDetail method -->
+  
+  <div id="book-detail">
+    <h3 @click="toggleDetails">{{ title }}</h3>
+    <transition name="fade">
+      <div v-if=showDetail>
+        <h4>{{ author }}</h4>
+        <p>{{ summary }} </p>
+      </div>
+    </transition>
+  </div>
+
   <div id="media-list">
     <h2>{{ title }}</h2>
     <ul>
       <li v-for="media in mediaList">
         <h3 v-on:click="toggleDetails(media)">{{ media.title }}</h3> 
-        <transition name="fade">
+        <transition name="fade"></transition>
           <div v-if="media.showDetail">
               <p>Type: {{ media.type }}</p>
               <p v-show="media.contributor">By: {{ media.contributor }}</p>
