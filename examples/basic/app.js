@@ -50,6 +50,7 @@ const mediaList = new Vue({
   el: '#media-list',
   data: {
     title: 'The Library',
+    type: 'all',
     mediaList: [
       {
         title: 'Hop on Pop', 
@@ -59,21 +60,27 @@ const mediaList = new Vue({
       },
       {
         title: 'The Joy of Painting', 
-        type: 'streaming video',
+        type: 'streaming',
         contributor: 'Bob Ross',
         showDetail: false,
       },
       {
         title: 'Supernatural: The Complete 12th Season!!!!', 
-        type: 'DVD!!!!',
+        type: 'streaming',
         contributor: "   oijoij",
         showDetail: false,
         
       },
       {
         title: 'Titanic', 
-        type: 'streaming video',
+        type: 'streaming',
         contributor: 'James Cameron',
+        showDetail: false,
+      },
+      {
+        title: 'The Sirens of Titan', 
+        type: 'book',
+        contributor: 'Kurt Vonnegut',
         showDetail: false,
       },
     ]
@@ -81,6 +88,9 @@ const mediaList = new Vue({
   methods: {
     toggleDetails: function(media){
       media.showDetail ? media.showDetail = false : media.showDetail = true;
+    },
+    filterList: function(){
+      this.type = event.target.value;
     }
   }
 });

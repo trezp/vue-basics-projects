@@ -36,9 +36,17 @@
 
   <div id="media-list">
     <h2>{{ title }}</h2>
+    <select v-on:change="filterList()" name="" id="">
+      <option value="all">Choose One...</option>
+      <option value="book">Book</option>
+      <option value="streaming">Streaming Video</option>
+    </select>
     <ul>
       <li v-for="media in mediaList">
-        <h3 v-on:click="toggleDetails(media)">{{ media.title }}</h3> 
+        <h3 
+          v-on:click="toggleDetails(media)"
+          v-if="type === 'all' || type === media.type"
+          >{{ media.title }}</h3> 
         <transition name="fade"></transition>
           <div v-if="media.showDetail">
               <p>Type: {{ media.type }}</p>
