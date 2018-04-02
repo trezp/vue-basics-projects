@@ -24,7 +24,7 @@
   Set showDetail to false
   Write toggleDetail method -->
   
-  <div id="book-detail">
+  <!-- <div id="book-detail">
     <h3 @click="toggleDetails">{{ title }}</h3>
     <transition name="fade">
       <div v-if=showDetail>
@@ -32,27 +32,29 @@
         <p>{{ summary }} </p>
       </div>
     </transition>
-  </div>
+  </div> -->
 
-  <div id="media-list">
+  <div id="media-list" class="container">
     <h2>{{ title }}</h2>
     <select v-on:change="filterList()" name="" id="">
-      <option value="all">Choose One...</option>
+      <option value="all">Select a type of media...</option>
+      <option v-for="item in uniqueItemsList" 
+              v-bind:value="item">{{item}}</option>
+      <!-- <option value="all">Choose One...</option>
       <option value="book">Book</option>
-      <option value="streaming">Streaming Video</option>
+      <option value="streaming">Streaming Video</option> -->
     </select>
     <ul>
       <li v-for="media in mediaList">
         <h3 
           v-on:click="toggleDetails(media)"
-          v-if="type === 'all' || type === media.type"
+          v-if="type === 'all' || type === media.tag"
           >{{ media.title }}</h3> 
-        <transition name="fade"></transition>
-          <div v-if="media.showDetail">
-              <p>Type: {{ media.type }}</p>
-              <p v-show="media.contributor">By: {{ media.contributor }}</p>
-          </div>
-        </transition>
+
+        <div v-if="media.showDetail">
+          <p>{{ media.description }}</p>
+          <p v-show="media.contributor">By: {{ media.contributor }}</p>
+        </div>
       </li>
     </ul>
   </div>

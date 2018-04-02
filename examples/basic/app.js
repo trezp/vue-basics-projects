@@ -46,7 +46,7 @@ const bookDetail = new Vue({
 ///////////////// DISPLAYING A LIST/ SIMPLE ACCORDIAN ////////////
 //Instead of an accordian, make a select menu that we can use to filter the list
 //Probably also make a search
-const mediaList = new Vue({
+const app = new Vue({
   el: '#media-list',
   data: {
     title: 'The Library',
@@ -54,35 +54,53 @@ const mediaList = new Vue({
     mediaList: [
       {
         title: 'Hop on Pop', 
-        type: 'book',
+        description: "A delightful children's book.",
+        tag: 'book',
         contributor: 'Dr. Suess',
         showDetail: false,
       },
       {
         title: 'The Joy of Painting', 
-        type: 'streaming',
+        description: "Create a world of happy little trees!",
+        tag: 'video',
         contributor: 'Bob Ross',
-        showDetail: false,
+        showDetail: false
       },
       {
-        title: 'Supernatural: The Complete 12th Season!!!!', 
-        type: 'streaming',
-        contributor: "   oijoij",
+        title: 'Supernatural: The Complete 12th Season', 
+        description: "A (literally) neverending roadtrip.",
+        tag: 'video',
+        contributor: "Eric Kripke",
+        showDetail: false
+      },
+      {
+        title: 'Planet Earth II', 
+        description: "Hours of beautiful but heart attack-inducing nature footage",
+        tag: 'streaming video',
+        contributor: 'David Attenborough',
         showDetail: false,
-        
       },
       {
         title: 'Titanic', 
-        type: 'streaming',
+        description: "The boat sinks.",
+        tag: 'video',
         contributor: 'James Cameron',
         showDetail: false,
       },
       {
         title: 'The Sirens of Titan', 
-        type: 'book',
+        description: "Mankind flung its advance agents ever outward, ever outward.",
+        tag: 'book',
         contributor: 'Kurt Vonnegut',
         showDetail: false,
       },
+      {
+        title: 'Better Call Saul', 
+        description: "A slow-burning Breaking Bad prequel.",
+        tag: 'streaming video',
+        contributor: 'someone',
+        showDetail: false,
+      }
     ]
   },
   methods: {
@@ -91,6 +109,17 @@ const mediaList = new Vue({
     },
     filterList: function(){
       this.type = event.target.value;
+    }
+  }, 
+  computed: {
+    uniqueItemsList(){
+      const newList = [];
+      this.mediaList.forEach(function(item){
+        if (!newList.includes(item.tag)){
+          newList.push(item.tag)
+        }
+      })
+      return newList;
     }
   }
 });
