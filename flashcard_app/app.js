@@ -1,21 +1,21 @@
 const cards = [
   {
-    'front': 'This is the front side of the card.',
-    'back': 'This is the back side of the card.',
-    'active': false,
-    'memorized': false
+    'front': 'v-text',
+    'back': 'Directive: inserts text into the DOM',
+    'flipped': false,
+    'memorized': false,
   },
   {
-    'front': 'This is card 2',
-    'back': 'This is the back side of card 2.',
-    'active': false,
-    'memorized': false
+    'front': '@',
+    'back': 'Shorthand for an event: @click',
+    'flipped': false,
+    'memorized': false,
   },
   {
-    'front': 'This is card 3',
-    'back': 'This is the back side of card 3.',
-    'active': false,
-    'memorized': false
+    'front': 'v-bind',
+    'back': 'Shorthand :',
+    'flipped': false,
+    'memorized': false,
   },
 ] 
 
@@ -24,26 +24,30 @@ new Vue({
   data: {
     cards: cards,
     cardFront: '',
-    cardBack: '',
-
+    cardBack: ''
   },
   methods: {
     toggleCard: function(card){
-      card.active ? card.active = false : card.active = true;
+      card.flipped ? card.flipped = false : card.flipped = true;
     },
     addNew: function(){
-      this.cards.push({
-        'front': this.cardFront,
-        'back': this.cardBack,
-        'active': false,
-        'memorized': false
-      });
-      this.cardFront = '';
-      this.cardBack = '';
+      if(this.cardFront.length && this.cardBack.length){
+        this.cards.push({
+          'front': this.cardFront,
+          'back': this.cardBack,
+          'flipped': false,
+          'memorized': false
+        });
+        this.cardFront = '';
+        this.cardBack = '';
+      } else {
+        console.log("Please enter something first")
+      }
+      
     },
-    toggleMemo: function(card){
-      card.memorized ? card.memorized = false : card.memorized = true;
-       
+    memorized: function(card){
+      card.flipped = false;
+      card.memorized = !card.memorized;
     }
   }
 });

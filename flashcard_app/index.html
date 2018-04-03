@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
       rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
@@ -14,25 +15,27 @@
 
     <h1>Flashcard App!</h1>
 
-    <form v-on:submit.prevent="addNew" v-on:keypress.enter="submit">
+    <div>
       <label for="front">Front
         <input v-model="cardFront" type="text" id="front">
       </label>
       <label for="back">Back
-        <input v-model="cardBack" type="text" id="back">
+        <input v-on:keypress.enter="addNew" v-model="cardBack" type="text" id="back">
       </label>
-      <button type="submit" >Add a New Card</button>
-    </form>
+      <button v-on:click="addNew">Add a New Card</button>
+    </div>  
     
 
-    <ul>
+    <transition-group name="fade" tag="ul" mode="out-in">
       <li v-for="(card, index) in cards" class="card" 
           v-on:click="toggleCard(card)"
-          v-bind:class="{done: card.memorized}">
+          v-bind:class="{done: card.memorized}"
+          v-bind:key="index">
         <span class="delete"><i v-on:click="cards.splice(index, 1)" class="material-icons">clear</i></span>
-        <p v-show="!card.active" class="front">{{card.front}}</p>
-        <p v-show="card.active" class="back">{{card.back}}</p>
-        <div class="check" v-on:click="toggleMemo(card)">
+        <p v-show="!card.flipped" class="front">{{card.front}}</p>
+        <p v-show="card.flipped" class="back">{{card.back}}</p>
+        <div class="check" v-on:click="memorized(card)">
+            <!-- change to if/else to demonstrate -->
             <p v-show="!card.memorized">
               <i  class="material-icons">check_box_outline_blank </i> I know it!
             </p> 
@@ -41,7 +44,7 @@
             </p>
         </div>
       </li>
-    </ul>
+    </transition-group>
 
   </div>
 

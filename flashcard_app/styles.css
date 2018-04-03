@@ -1,4 +1,6 @@
-
+body {
+  font-family: 'Open Sans', sans-serif;
+}
 ul {
   list-style-type: none;
   padding-left: 0;
@@ -12,7 +14,7 @@ ul {
 }
 .card {
   width: 100px;
-  height: 100px;
+  height: 150px;
   padding: 30px;
   border: 1px solid black;
   border-radius: 3px;
@@ -50,4 +52,12 @@ ul {
 
 .done {
   background: gold;
+  border: gold;
+}
+
+.fade-enter-active {
+  transition: all 1s ease;
+}
+.fade-enter-to, .fade-leave-to {
+  transform: rotateY(180deg);
 }
