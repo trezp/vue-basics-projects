@@ -49,7 +49,7 @@ const bookDetail = new Vue({
 const app = new Vue({
   el: '#media-list',
   data: {
-    title: 'The Library',
+    title: 'Treehouse Public Library',
     type: 'all',
     mediaList: [
       {
@@ -116,7 +116,7 @@ const app = new Vue({
       const newList = [];
       this.mediaList.forEach(function(item){
         if (!newList.includes(item.tag)){
-          newList.push(item.tag)
+          newList.push(item.tag);
         }
       })
       return newList;

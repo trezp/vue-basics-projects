@@ -4,6 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
   <title>Flash!</title>
 </head>
@@ -12,19 +14,32 @@
 
     <h1>Flashcard App!</h1>
 
-    <label for="front">Front
-      <input v-model="cardFront" type="text" id="front">
-    </label>
-    <label for="back">Back
-      <input v-model="cardBack" type="text" id="back">
-    </label>
-    <button v-on:click="addNew">Add a New Card</button>
+    <form v-on:submit.prevent="addNew" v-on:keypress.enter="submit">
+      <label for="front">Front
+        <input v-model="cardFront" type="text" id="front">
+      </label>
+      <label for="back">Back
+        <input v-model="cardBack" type="text" id="back">
+      </label>
+      <button type="submit" >Add a New Card</button>
+    </form>
+    
 
     <ul>
-      <li v-for="(card, index) in cards" class="card" v-on:click="toggleCard(card)">
-        <span v-on:click="cards.splice(index, 1)">X</span>
+      <li v-for="(card, index) in cards" class="card" 
+          v-on:click="toggleCard(card)"
+          v-bind:class="{done: card.memorized}">
+        <span class="delete"><i v-on:click="cards.splice(index, 1)" class="material-icons">clear</i></span>
         <p v-show="!card.active" class="front">{{card.front}}</p>
         <p v-show="card.active" class="back">{{card.back}}</p>
+        <div class="check" v-on:click="toggleMemo(card)">
+            <p v-show="!card.memorized">
+              <i  class="material-icons">check_box_outline_blank </i> I know it!
+            </p> 
+            <p v-show="card.memorized">
+              <i class="material-icons checked-box">check_box</i>
+            </p>
+        </div>
       </li>
     </ul>
 
