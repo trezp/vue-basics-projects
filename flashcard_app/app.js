@@ -1,19 +1,19 @@
 const cards = [
   {
-    'front': 'v-text',
-    'back': 'Directive: inserts text into the DOM',
+    'front': 'Front of card 1',
+    'back': 'Back of card 1',
     'flipped': false,
     'memorized': false,
   },
   {
-    'front': '@',
-    'back': 'Shorthand for an event: @click',
+    'front': 'Front of card 2',
+    'back': 'Back of card 2',
     'flipped': false,
     'memorized': false,
   },
   {
-    'front': 'v-bind',
-    'back': 'Shorthand :',
+    'front': 'Front of card 3',
+    'back': 'Back of card 3',
     'flipped': false,
     'memorized': false,
   },

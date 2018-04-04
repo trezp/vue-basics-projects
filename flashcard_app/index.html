@@ -26,26 +26,30 @@
     </div>  
     
 
-    <transition-group name="fade" tag="ul" mode="out-in">
-      <li v-for="(card, index) in cards" class="card" 
-          v-on:click="toggleCard(card)"
-          v-bind:class="{done: card.memorized}"
-          v-bind:key="index">
-        <span class="delete"><i v-on:click="cards.splice(index, 1)" class="material-icons">clear</i></span>
-        <p v-show="!card.flipped" class="front">{{card.front}}</p>
-        <p v-show="card.flipped" class="back">{{card.back}}</p>
-        <div class="check" v-on:click="memorized(card)">
-            <!-- change to if/else to demonstrate -->
-            <p v-show="!card.memorized">
-              <i  class="material-icons">check_box_outline_blank </i> I know it!
-            </p> 
-            <p v-show="card.memorized">
-              <i class="material-icons checked-box">check_box</i>
-            </p>
-        </div>
-      </li>
-    </transition-group>
-
+    <ul>
+      <span v-for="(card, index) in cards" 
+        v-on:click="toggleCard(card)"
+        v-bind:class="{done: card.memorized}">
+        <transition-group name="flip" tag="span" mode="out-in">    
+          <li class="card" v-show="!card.flipped" v-bind:key="index">
+            <span class="delete"><i v-on:click="cards.splice(index, 1)" class="material-icons">clear</i></span>
+            <p class="front">{{card.front}}</p>
+            <div class="check" v-on:click="memorized(card)">
+                <!-- change to if/else to demonstrate -->
+                <p v-show="!card.memorized">
+                  <i  class="material-icons">check_box_outline_blank </i> I know it!
+                </p> 
+                <p v-show="card.memorized">
+                  <i class="material-icons checked-box">check_box</i>
+                </p>
+            </div>
+          </li>
+          <li class="card" v-show="card.flipped" v-bind:key="index + 1">
+            <p>{{card.back}}</p>
+          </li>
+        </transition-group>
+      </span>
+    </ul>
   </div>
 
   <script src="https://cdn.jsdelivr.net/npm/vue@2.5.13/dist/vue.js"></script>
