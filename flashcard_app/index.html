@@ -11,7 +11,7 @@
   <title>Flash!</title>
 </head>
 <body>
-  <div id="cardList">
+  <div id="flashcard-app" class="container">
 
     <h1>Flashcard App!</h1>
 
@@ -28,23 +28,26 @@
 
     <ul>
       <span v-for="(card, index) in cards" 
-        v-on:click="toggleCard(card)"
-        v-bind:class="{done: card.memorized}">
+        v-on:click="toggleCard(card)">
         <transition-group name="flip" tag="span" mode="out-in">    
-          <li class="card" v-show="!card.flipped" v-bind:key="index">
+          <li class="card" v-bind:class="{memorized: card.memorized}" 
+            v-show="!card.flipped" 
+            v-bind:key="index">
             <span class="delete"><i v-on:click="cards.splice(index, 1)" class="material-icons">clear</i></span>
-            <p class="front">{{card.front}}</p>
-            <div class="check" v-on:click="memorized(card)">
-                <!-- change to if/else to demonstrate -->
-                <p v-show="!card.memorized">
-                  <i  class="material-icons">check_box_outline_blank </i> I know it!
-                </p> 
-                <p v-show="card.memorized">
-                  <i class="material-icons checked-box">check_box</i>
-                </p>
-            </div>
+            <p>{{card.front}}</p>
+            <!-- <div class="check" v-on:click="memorized(card)">
+              <p v-if="!card.memorized">
+                <i  class="material-icons">check_box_outline_blank </i> I know it!
+              </p> 
+              <p v-else="card.memorized">
+                <i class="material-icons checked-box">check_box</i>
+              </p>
+            </div> -->
           </li>
-          <li class="card" v-show="card.flipped" v-bind:key="index + 1">
+          <li class="card" v-bind:class="{memorized: card.memorized}"
+            v-show="card.flipped" 
+            v-bind:key="index + 1">
+            <span class="delete"><i v-on:click="cards.splice(index, 1)" class="material-icons">clear</i></span>
             <p>{{card.back}}</p>
           </li>
         </transition-group>

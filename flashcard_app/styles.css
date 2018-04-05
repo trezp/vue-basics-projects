@@ -2,7 +2,6 @@ body {
   font-family: 'Open Sans', sans-serif;
 }
 ul {
-  list-style-type: none;
   padding-left: 0;
   display: flex;
   flex-flow: row wrap;
@@ -12,7 +11,7 @@ li {
   list-style-type: none;
 }
 
-#cardList {
+.container {
   max-width: 80%;
   padding: 2em;
 }
@@ -27,17 +26,17 @@ li {
   position: relative;
 }
 
+.card p {
+  text-align: center;
+}
+
 .card .delete {
   position: absolute;
   right: 0;
   top: 0;
 }
 
-.card p {
-  text-align: center;
-}
-
-.check {
+/* .check {
   position: absolute;
   left: 0;
   bottom: 0;
@@ -45,19 +44,20 @@ li {
 
 .check p {
   margin: 0;
-}
+} */
 
 .material-icons {
   vertical-align: middle;
 }
-.material-icons.checked-box {
+/* .material-icons.checked-box {
   color: white;
-}
+} */
 
-.done {
+/* .memorized {
   background: gold;
   border: gold;
-}
+  color: white;
+} */
 
 .flip-enter-active {
   transition: all .4s ease;

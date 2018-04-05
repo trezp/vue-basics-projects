@@ -20,7 +20,7 @@ const cards = [
 ] 
 
 new Vue({
-  el: '#cardList',
+  el: '#flashcard-app',
   data: {
     cards: cards,
     cardFront: '',
@@ -28,7 +28,7 @@ new Vue({
   },
   methods: {
     toggleCard: function(card){
-      card.flipped ? card.flipped = false : card.flipped = true;
+      card.flipped = !card.flipped;
     },
     addNew: function(){
       if(this.cardFront.length && this.cardBack.length){
@@ -46,8 +46,8 @@ new Vue({
       
     },
     memorized: function(card){
-      card.flipped = false;
       card.memorized = !card.memorized;
+      card.flipped = false;
     }
   }
 });
