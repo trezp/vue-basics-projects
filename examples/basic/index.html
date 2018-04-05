@@ -47,7 +47,8 @@
         <h3 
           v-on:click="toggleDetails(media)"
           v-if="type === 'all' || type === media.tag"
-          >{{ media.title }}</h3> 
+          >{{ media.title }}
+        </h3> 
 
         <div v-if="media.showDetail">
           <p>{{ media.description }}</p>

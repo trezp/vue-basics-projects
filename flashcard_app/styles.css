@@ -60,8 +60,10 @@ li {
 }
 
 .flip-enter-active {
-  transition: all .7s ease;
+  transition: all .4s ease;
 }
-.flip-enter-to, .flip-leave-to {
-  transform: rotateY(360deg);
+
+.flip-enter, .flip-leave {
+  transform: rotateY(180deg);
+  opacity: 0;
 }
