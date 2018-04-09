@@ -19,6 +19,8 @@ const cards = [
   },
 ] 
 
+
+
 new Vue({
   el: '#flashcard-app',
   data: {

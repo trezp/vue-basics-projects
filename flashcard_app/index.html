@@ -25,7 +25,6 @@
       <button v-on:click="addNew">Add a New Card</button>
     </div>  
     
-
     <ul>
       <span v-for="(card, index) in cards" 
         v-on:click="toggleCard(card)">
@@ -53,6 +52,7 @@
         </transition-group>
       </span>
     </ul>
+    
   </div>
 
   <script src="https://cdn.jsdelivr.net/npm/vue@2.5.13/dist/vue.js"></script>
