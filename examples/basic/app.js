@@ -1,29 +1,29 @@
 
 /////// HELLO VUE EXAMPLE ///////
-// const helloVue = new Vue({
-//   el: '#hello-vue',
-//   data: {
-//     title: 'Hello World!',
-//     message: 'This is a message!'
-//   },
-//   methods: {
-//     sayHello1: function(){
-//       alert('Hello');
-//     },
-//     sayTitle: function(){
-//       alert(this.title);
-//     }
-//   }
-// });
+const helloVue = new Vue({
+  el: '#hello-vue',
+  data: {
+    title: 'Hello World!',
+    message: 'This is a message!'
+  },
+  methods: {
+    sayHello: function(){
+      alert('Hello');
+    },
+    sayTitle: function(){
+      console.log(this.title);
+    }
+  }
+});
 
-// const helloVue2 = new Vue({
-//   el: '#hello-vue2',
-//   data: {
-//     title: 'Also hello, world!',
-//     message: 'This is also a message!',
-//     message2: 'Adding another binding is easy.'
-//   }
-// });
+const helloVue2 = new Vue({
+  el: '#hello-vue2',
+  data: {
+    title: 'Also hello, world!',
+    message: 'This is also a message!',
+    message2: 'Adding another binding is easy.'
+  }
+});
 
 ///////////// SINGLE MEDIA ITEM ///////////
 // Do this example, only with showDetail as well
@@ -38,7 +38,7 @@ const bookDetail = new Vue({
   },
   methods: {
     toggleDetails: function(){
-      this.showDetail ? this.showDetail = false : this.showDetail = true;
+      this.showDetail = !this.showDetail;
     }
   }
 });
@@ -105,7 +105,7 @@ const app = new Vue({
   },
   methods: {
     toggleDetails: function(media){
-      media.showDetail ? media.showDetail = false : media.showDetail = true;
+      media.showDetail = !media.showDetail;
     },
     filterList: function(){
       this.type = event.target.value;
@@ -113,13 +113,13 @@ const app = new Vue({
   }, 
   computed: {
     uniqueItemsList(){
-      const newList = [];
-      this.mediaList.forEach(function(item){
-        if (!newList.includes(item.tag)){
-          newList.push(item.tag);
+      const tagArray = [];
+      this.mediaList.forEach((item) =>{
+        if (!tagArray.includes(item.tag)){
+          tagArray.push(item.tag);
         }
-      })
-      return newList;
+      });
+      return tagArray;
     }
   }
 });
