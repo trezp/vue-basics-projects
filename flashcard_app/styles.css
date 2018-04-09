@@ -16,6 +16,7 @@ li {
   padding: 2em;
 }
 .card {
+  display: block;
   width: 100px;
   height: 150px;
   padding: 30px;
@@ -30,11 +31,16 @@ li {
   text-align: center;
 }
 
-.card .delete {
+.delete-card {
   position: absolute;
   right: 0;
   top: 0;
 }
+
+.delete-card:hover, .error {
+  color: red;
+}
+
 
 /* .check {
   position: absolute;

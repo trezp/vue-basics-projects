@@ -31,10 +31,14 @@ li {
   text-align: center;
 }
 
-.card .delete {
+.delete-card {
   position: absolute;
   right: 0;
   top: 0;
+}
+
+.delete-card:hover, .error {
+  color: red;
 }
 
 .material-icons {

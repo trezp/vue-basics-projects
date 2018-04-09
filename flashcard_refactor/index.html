@@ -23,13 +23,14 @@
         <input v-on:keypress.enter="addNew" v-model="cardBack" type="text" id="back">
       </label>
       <button v-on:click="addNew">Add a New Card</button>
+      <span class="error" v-if="error">Oops! Cards need a front and a back.</span>
     </div>  
     
     <ul>
       <flashcard
             v-for="(card, index) in cards" 
             v-on:click.native="toggleCard(card)"
-            v-on:delete-card="cards.splice(index, 1)"
+            v-on:delete-card="handleDelete(index)"
             :card="card"
             :index="index">
       </flashcard>

@@ -26,7 +26,8 @@ new Vue({
   data: {
     cards: cards,
     cardFront: '',
-    cardBack: ''
+    cardBack: '',
+    error: false
   },
   methods: {
     toggleCard: function(card){
@@ -42,10 +43,10 @@ new Vue({
         });
         this.cardFront = '';
         this.cardBack = '';
+        this.error = false;
       } else {
-        console.log("Please enter something first")
+        this.error = true;
       }
-      
     },
     memorized: function(card){
       card.memorized = !card.memorized;

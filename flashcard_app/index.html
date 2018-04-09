@@ -23,16 +23,19 @@
         <input v-on:keypress.enter="addNew" v-model="cardBack" type="text" id="back">
       </label>
       <button v-on:click="addNew">Add a New Card</button>
+      <span class="error" v-if="error">Oops! Cards need a front and a back.</span>
     </div>  
     
     <ul>
-      <span v-for="(card, index) in cards" 
+      <li v-for="(card, index) in cards" 
         v-on:click="toggleCard(card)">
         <transition-group name="flip" tag="span" mode="out-in">    
-          <li class="card" v-bind:class="{memorized: card.memorized}" 
+          <span class="card" v-bind:class="{memorized: card.memorized}" 
             v-show="!card.flipped" 
             v-bind:key="index">
-            <span class="delete"><i v-on:click="cards.splice(index, 1)" class="material-icons">clear</i></span>
+            <span class="delete-card" v-on:click="cards.splice(index, 1)">
+              <i class="material-icons">clear</i>
+            </span>
             <p>{{card.front}}</p>
             <!-- <div class="check" v-on:click="memorized(card)">
               <p v-if="!card.memorized">
@@ -42,15 +45,17 @@
                 <i class="material-icons checked-box">check_box</i>
               </p>
             </div> -->
-          </li>
-          <li class="card" v-bind:class="{memorized: card.memorized}"
+          </span>
+          <span class="card" v-bind:class="{memorized: card.memorized}"
             v-show="card.flipped" 
             v-bind:key="index + 1">
-            <span class="delete"><i v-on:click="cards.splice(index, 1)" class="material-icons">clear</i></span>
+            <span class="delete-card" v-on:click="cards.splice(index, 1)">
+              <i class="material-icons">clear</i>
+            </span>
             <p>{{card.back}}</p>
-          </li>
+          </span>
         </transition-group>
-      </span>
+      </li>
     </ul>
     
   </div>

@@ -22,13 +22,13 @@ Vue.component('flashcard', {
     <span class="card" v-bind:class="{memorized: card.memorized}" 
       v-show="!card.flipped" 
       v-bind:key="index">
-      <span class="delete" v-on:click="$emit('delete-card')"><i class="material-icons">clear</i></span>    
+      <span class="delete-card" v-on:click="$emit('delete-card')"><i class="material-icons">clear</i></span>    
       <p>{{card.front}}</p>
     </span>
     <span class="card" v-bind:class="{memorized: card.memorized}"
       v-show="card.flipped" 
       v-bind:key="index + 1">
-      <span class="delete" v-on:click="$emit('delete-card')"><i class="material-icons">clear</i></span>
+      <span class="delete-card" v-on:click="$emit('delete-card')"><i class="material-icons">clear</i></span>
       <p>{{card.back}}</p>
     </span>
   </transition-group>
@@ -42,7 +42,8 @@ new Vue({
     return {
       cards: cards,
       cardFront: '',
-      cardBack: ''
+      cardBack: '',
+      error: false
     }
   },
   methods: {
@@ -58,14 +59,13 @@ new Vue({
         });
         this.cardFront = '';
         this.cardBack = '';
+        this.error = false;
       } else {
-        console.log("Please enter something first")
+        this.error = true;
       }
     },
-    events: {
-      deleteCard: function(){
-        console.log("card deleted");
-      }
+    handleDelete: function(index){
+      this.cards.splice(index,1);
     }
   }
 });
