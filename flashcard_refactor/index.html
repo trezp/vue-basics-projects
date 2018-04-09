@@ -28,8 +28,8 @@
     <ul>
       <flashcard
             v-for="(card, index) in cards" 
-            @click.native="toggleCard(card)"
-            @click.native="cards.splice(index, 1)"
+            v-on:click.native="toggleCard(card)"
+            v-on:delete-card="cards.splice(index, 1)"
             :card="card"
             :index="index">
       </flashcard>

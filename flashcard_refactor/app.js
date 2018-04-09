@@ -16,22 +16,19 @@ const cards = [
   },
 ] 
 
-//Delete cards 
-
-
 Vue.component('flashcard', {
   template: `
   <transition-group name="flip" tag="li">
     <span class="card" v-bind:class="{memorized: card.memorized}" 
       v-show="!card.flipped" 
       v-bind:key="index">
-      <span class="delete"><i v-on:click.native="cards.splice(index, 1)" class="material-icons">clear</i></span>    
+      <span class="delete" v-on:click="$emit('delete-card')"><i class="material-icons">clear</i></span>    
       <p>{{card.front}}</p>
     </span>
     <span class="card" v-bind:class="{memorized: card.memorized}"
       v-show="card.flipped" 
       v-bind:key="index + 1">
-      <span class="delete"><i v-on:click.native="cards.splice(index, 1)" class="material-icons">clear</i></span>
+      <span class="delete" v-on:click="$emit('delete-card')"><i class="material-icons">clear</i></span>
       <p>{{card.back}}</p>
     </span>
   </transition-group>
@@ -63,6 +60,11 @@ new Vue({
         this.cardBack = '';
       } else {
         console.log("Please enter something first")
+      }
+    },
+    events: {
+      deleteCard: function(){
+        console.log("card deleted");
       }
     }
   }
