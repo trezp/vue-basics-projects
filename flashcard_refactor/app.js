@@ -18,7 +18,7 @@ const cards = [
 
 Vue.component('flashcard', {
   template: `
-    <transition-group name="flip" tag="span">
+    <transition-group name="flip" tag="li">
       <span class="card" 
         v-on:click="flipCard(card)"
         v-show="!card.flipped" 
@@ -70,9 +70,6 @@ new Vue({
     },
     handleDelete: function(index){
       this.cards.splice(index,1);
-    },
-    handleCardFlip: function(card){
-      card.flipped = !card.flipped;
     }
   }
 });
