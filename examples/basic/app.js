@@ -21,12 +21,12 @@ const helloVue2 = new Vue({
   data: {
     title: 'Also hello, world!',
     message: 'This is also a message!',
-    message2: 'Adding another binding is easy.'
+    message2: 'Adding another piece of data is easy.'
   }
 });
 
 ///////////// SINGLE MEDIA ITEM ///////////
-// Do this example, only with showDetail as well
+
 const bookDetail = new Vue({
   el: '#book-detail',
   data: {
@@ -43,14 +43,13 @@ const bookDetail = new Vue({
   }
 });
 
-///////////////// DISPLAYING A LIST/ SIMPLE ACCORDIAN ////////////
-//Instead of an accordian, make a select menu that we can use to filter the list
-//Probably also make a search
+///////////////// DISPLAYING AND SORTING A LIST ////////////
+
 const app = new Vue({
   el: '#media-list',
   data: {
     title: 'Treehouse Public Library',
-    type: 'all',
+    type: '',
     mediaList: [
       {
         title: 'Hop on Pop', 
@@ -113,13 +112,13 @@ const app = new Vue({
   }, 
   computed: {
     uniqueItemsList: function(){
-      const tagArray = [];
-      this.mediaList.forEach((item) =>{
-        if (!tagArray.includes(item.tag)){
-          tagArray.push(item.tag);
+      const tags = [];
+      this.mediaList.forEach((item) => {
+        if (!tags.includes(item.tag)){
+          tags.push(item.tag);
         }
       });
-      return tagArray;
+      return tags;
     }
   }
 });

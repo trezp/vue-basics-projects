@@ -5,11 +5,31 @@ body {
 .container {
   max-width: 80%; 
   margin: auto;
+  min-height: initial;
 }
 
+.container > div {
+  padding-bottom: 30px;
+}
+
+.container > div:last-child {
+  min-height: 500px;
+}
 
 h3 {
   cursor: pointer;
+}
+
+.more:after {
+  content: "\25BC";
+  vertical-align: middle;
+  font-size: 8px;
+}
+
+.less:after {
+  content: "\25B2";
+  vertical-align: middle;
+  font-size: 8px;
 }
 
 ul {

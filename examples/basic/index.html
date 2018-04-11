@@ -9,56 +9,60 @@
   <title>What a Beautiful Vue!</title>
 </head>
 <body>
-  <h1>Example 1</h1>
-  <div id="hello-vue">
-    <h2 v-on:click="sayTitle">{{ title }}</h2>
-    <p v-on:click="sayHello">{{ message }}</p>
-  </div>
+  <div class="container">
 
-  <div id="hello-vue2">
+    <div id="hello-vue">
+      <h1>Stage 1</h1>
+      <h2 v-on:click="sayTitle">{{ title }}</h2>
+      <p v-on:click="sayHello">{{ message }}</p>
+    </div>
+
+    <div id="hello-vue2">
       <h2>{{ title }}</h2>
       <h3>{{message2}}</h3>
       <p>{{ message + ' ' + message2 }}</p>
-  </div>
+    </div>
 
-  <!-- Start with example of showing the whole media
-  Walk through media.contributor v-show example
-  Set showDetail to false
-  Write toggleDetail method -->
-  
-  <h1>Example 2</h1>
-  <div id="book-detail">
-    <h3 v-on:click="toggleDetails">{{ title }}</h3>
-      <div v-show="showDetail">
-        <h4>{{ author }}</h4>
-        <p>{{ summary }} </p>
-      </div>
-  </div>
-
-  <h1>Example 3</h1>
-  <div id="media-list" class="container">
-    <h2>{{ title }}</h2>
-    <select v-on:change="filterList" name="" id="">
-      <option value="all">Select a type of media...</option>
-      <option v-for="item in uniqueItemsList" 
-              v-bind:value="item">{{item}}</option>
-    </select>
-    <ul>
-      <li v-for="media in mediaList">
-        <h3 
-          v-on:click="toggleDetails(media)"
-          v-if="type === 'all' || type === media.tag"
-          >{{ media.title }}
-        </h3> 
-
-        <div v-if="media.showDetail">
-          <p>{{ media.description }}</p>
-          <p v-show="media.contributor">By: {{ media.contributor }}</p>
+    <!-- Start with example of showing the whole media
+    Walk through media.contributor v-show example
+    Set showDetail to false
+    Write toggleDetail method -->
+    
+    <div id="book-detail">
+      <h1>Stage 1 Part 2</h1>
+      <h3 v-on:click="toggleDetails">{{ title }}</h3>
+        <div v-show="showDetail">
+          <h4>{{ author }}</h4>
+          <p>{{ summary }} </p>
         </div>
-      </li>
-    </ul>
-  </div>
+    </div>
 
+    
+    <div id="media-list">
+      <h1>Stage 2</h1>
+      <h2>{{ title }}</h2>
+      <select v-on:change="filterList" name="" id="">
+        <option value="">Select a type of media...</option>
+        <option v-for="item in uniqueItemsList" 
+                v-bind:value="item">{{item}}</option>
+      </select>
+      <ul>
+        <li v-for="media in mediaList">
+          <h3 
+            v-on:click="toggleDetails(media)"
+            v-show="type === '' || type === media.tag"
+            v-bind:class="{ more: !media.showDetail, less: media.showDetail}">
+            {{ media.title }}
+          </h3> 
+
+          <div v-show="media.showDetail">
+            <p>{{ media.description }}</p>
+            <p v-show="media.contributor">By: {{ media.contributor }}</p>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
 
   <script src="https://cdn.jsdelivr.net/npm/vue@2.5.13/dist/vue.js"></script>
   <script src="app.js"></script>
