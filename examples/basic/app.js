@@ -4,7 +4,7 @@ const helloVue = new Vue({
   el: '#hello-vue',
   data: {
     title: 'Hello World!',
-    message: 'This is a message!'
+    message: 'This is my first Vue template!'
   },
   methods: {
     sayHello: function(){
@@ -112,7 +112,7 @@ const app = new Vue({
     }
   }, 
   computed: {
-    uniqueItemsList(){
+    uniqueItemsList: function(){
       const tagArray = [];
       this.mediaList.forEach((item) =>{
         if (!tagArray.includes(item.tag)){

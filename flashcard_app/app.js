@@ -48,9 +48,9 @@ new Vue({
         this.error = true;
       }
     },
-    memorized: function(card){
-      card.memorized = !card.memorized;
-      card.flipped = false;
-    }
+    // memorized: function(card){
+    //   card.memorized = !card.memorized;
+    //   card.flipped = false;
+    // }
   }
 });

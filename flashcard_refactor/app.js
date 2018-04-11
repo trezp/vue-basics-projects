@@ -18,22 +18,29 @@ const cards = [
 
 Vue.component('flashcard', {
   template: `
-  <transition-group name="flip" tag="li">
-    <span class="card" v-bind:class="{memorized: card.memorized}" 
-      v-show="!card.flipped" 
-      v-bind:key="index">
-      <span class="delete-card" v-on:click="$emit('delete-card')"><i class="material-icons">clear</i></span>    
-      <p>{{card.front}}</p>
-    </span>
-    <span class="card" v-bind:class="{memorized: card.memorized}"
-      v-show="card.flipped" 
-      v-bind:key="index + 1">
-      <span class="delete-card" v-on:click="$emit('delete-card')"><i class="material-icons">clear</i></span>
-      <p>{{card.back}}</p>
-    </span>
-  </transition-group>
+    <transition-group name="flip" tag="span">
+      <span class="card" 
+        v-on:click="flipCard(card)"
+        v-show="!card.flipped" 
+        v-bind:key="index">
+        <span class="delete-card" v-on:click="$emit('delete-card')"><i class="material-icons">clear</i></span>    
+        <p>{{card.front}}</p>
+      </span>
+      <span class="card"
+        v-on:click="flipCard(card)"
+        v-show="card.flipped" 
+        v-bind:key="index + 1">
+        <span class="delete-card" v-on:click="$emit('delete-card')"><i class="material-icons">clear</i></span>
+        <p>{{card.back}}</p>
+      </span>
+    </transition-group>
   `,
-  props: ['card', 'index']
+  props: ['card', 'index'],
+  methods: {
+    flipCard: function(card){
+      card.flipped = !card.flipped;
+    }
+  }
 });
 
 new Vue({
@@ -41,24 +48,21 @@ new Vue({
   data: function(){
     return {
       cards: cards,
-      cardFront: '',
-      cardBack: '',
+      front: '',
+      back: '',
       error: false
     }
   },
   methods: {
-    toggleCard: function(card){
-      card.flipped = !card.flipped;
-    },
     addNew: function(){
-      if(this.cardFront.length && this.cardBack.length){
+      if(this.front.length && this.back.length){
         this.cards.push({
-          'front': this.cardFront,
-          'back': this.cardBack,
+          'front': this.front,
+          'back': this.back,
           'flipped': false
         });
-        this.cardFront = '';
-        this.cardBack = '';
+        this.front = '';
+        this.back = '';
         this.error = false;
       } else {
         this.error = true;
@@ -66,6 +70,9 @@ new Vue({
     },
     handleDelete: function(index){
       this.cards.splice(index,1);
+    },
+    handleCardFlip: function(card){
+      card.flipped = !card.flipped;
     }
   }
 });

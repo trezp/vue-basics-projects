@@ -28,8 +28,8 @@
   
   <h1>Example 2</h1>
   <div id="book-detail">
-    <h3 @click="toggleDetails">{{ title }}</h3>
-      <div v-if=showDetail>
+    <h3 v-on:click="toggleDetails">{{ title }}</h3>
+      <div v-show="showDetail">
         <h4>{{ author }}</h4>
         <p>{{ summary }} </p>
       </div>
