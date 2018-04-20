@@ -5,23 +5,23 @@ const helloVue = new Vue({
   data: {
     title: 'Hello World!',
     message: 'This is my first Vue template!'
-  },
-  methods: {
-    sayHello: function(){
-      alert('Hello');
-    },
-    sayTitle: function(){
-      console.log(this.title);
-    }
   }
 });
 
-const helloVue2 = new Vue({
-  el: '#hello-vue2',
+const example = new Vue({
+  el: '#example',
   data: {
-    title: 'Also hello, world!',
-    message: 'This is also a message!',
-    message2: 'Adding another piece of data is easy.'
+    title: 'Hello again',
+    message: "Adding another piece of data is easy!",
+    name: "Thor",
+    image: "https://placeimg.com/200/200/nature",
+    alt: "Currently a placeholder image.",
+    isDisabled: true,
+  },
+  methods: {
+    sayHello: function(){
+      alert(this.title);
+    }
   }
 });
 
@@ -43,6 +43,16 @@ const bookDetail = new Vue({
   }
 });
 
+///////////////// DISPLAYING AN ARRAY //////////////////////
+
+const colorsOfTheRainbow = ["red", "orange", "yellow", "green", "blue", "indigo", "violet"];
+
+const arrExample = new Vue({
+  el: "#colors", 
+  data: {
+    rainbow: colorsOfTheRainbow
+  }
+});
 ///////////////// DISPLAYING AND SORTING A LIST ////////////
 
 const app = new Vue({

@@ -12,10 +12,6 @@ body {
   padding-bottom: 30px;
 }
 
-.container > div:last-child {
-  min-height: 500px;
-}
-
 h3 {
   cursor: pointer;
 }
