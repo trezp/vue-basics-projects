@@ -23,7 +23,7 @@
       <p>{{ message }}</p>
       <p>{{ title + ', ' + name.toUpperCase() + "!!!!" }}</p>
       <p>{{ title }}, {{name.toUpperCase()}}!!!</p>
-      <input type="text" v-on:keypress="isDisabled = false">
+      <input type="text" v-on:keypress="enableButton">
       <button v-bind:disabled="isDisabled">PRESS ME</button>
     </div>
 
@@ -34,7 +34,7 @@
     
     <div id="book-detail">
       <h1>Stage 1 Part 2</h1>
-      <h3 v-on:click="toggleDetails">{{ title }}</h3>
+      <h3 v-on:click="this.showDetail = !this.showDetail;">{{ title }}</h3>
         <div v-show="showDetail">
           <h4>{{ author }}</h4>
           <p>{{ summary }} </p>
@@ -42,9 +42,9 @@
     </div>
 
     <div id="colors">
-      <ul v-for="item in rainbow">
+      <ul v-for="(item, index) in rainbow">
         <li v-bind:style="{color:item}" >
-          <h2>{{ item }}</h2>
+          <h2>{{index }} - {{ item }}</h2>
         </li>
       </ul>
     </div>
@@ -54,8 +54,7 @@
       <h2>{{ title }}</h2>
       <select v-on:change="filterList" name="" id="">
         <option value="">Select a type of media...</option>
-        <option v-for="item in uniqueItemsList" 
-                v-bind:value="item">{{item}}</option>
+        <option v-for="item in uniqueItemsList">{{item}}</option>
       </select>
       <ul>
         <li v-for="media in mediaList">
